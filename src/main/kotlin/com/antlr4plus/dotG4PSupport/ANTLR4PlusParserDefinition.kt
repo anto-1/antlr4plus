@@ -1,0 +1,50 @@
+package com.antlr4plus.dotG4PSupport
+
+import com.antlr4plus.dotG4PSupport.language.ANTLR4PlusLanguage
+import com.antlr4plus.dotG4PSupport.language.FileRoot
+import com.intellij.lang.ASTNode
+import com.intellij.lang.ParserDefinition
+import com.intellij.lang.PsiParser
+import com.intellij.lexer.Lexer
+import com.intellij.openapi.project.Project
+import com.intellij.psi.FileViewProvider
+import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiFile
+import com.intellij.psi.TokenType
+import com.intellij.psi.impl.source.tree.LeafPsiElement
+import com.intellij.psi.tree.IFileElementType
+import com.intellij.psi.tree.TokenSet
+
+class ANTLR4PlusParserDefinition : ParserDefinition {
+    companion object {
+        val FILE: IFileElementType = IFileElementType(ANTLR4PlusLanguage.INSTANCE)
+    }
+
+    override fun createLexer(project: Project?): Lexer = PlainTextLexer()
+
+    override fun createParser(project: Project?): PsiParser = PsiParser { p0, builder ->
+        val marker = builder.mark()
+        while (!builder.eof()) {
+            builder.advanceLexer()
+        }
+        marker.done(p0)
+        builder.treeBuilt
+    }
+
+    override fun getFileNodeType(): IFileElementType = FILE
+
+    override fun createFile(viewProvider: FileViewProvider): PsiFile = FileRoot(viewProvider)
+
+    override fun getWhitespaceTokens(): TokenSet = TokenSet.create(TokenType.WHITE_SPACE)
+
+    override fun getCommentTokens(): TokenSet = TokenSet.EMPTY
+
+    override fun getStringLiteralElements(): TokenSet = TokenSet.EMPTY
+
+    override fun createElement(node: ASTNode): PsiElement = LeafPsiElement(node.elementType, node.text)
+
+    override fun spaceExistenceTypeBetweenTokens(
+        left: ASTNode?,
+        right: ASTNode?,
+    ): ParserDefinition.SpaceRequirements = ParserDefinition.SpaceRequirements.MAY
+}

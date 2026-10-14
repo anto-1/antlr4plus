@@ -1,0 +1,46 @@
+Additional notices fetched from versions pinned in Skia DEPS:
+
+third_party/externals/dng_sdk/LICENSE
+  https://android.googlesource.com/platform/external/dng_sdk.git/+/c8d0c9b1d16bfda56f15165d39e0ffa360a11123/LICENSE?format=TEXT
+
+third_party/externals/dng_sdk/LICENSE.source_code
+  https://android.googlesource.com/platform/external/dng_sdk.git/+/c8d0c9b1d16bfda56f15165d39e0ffa360a11123/LICENSE.source_code?format=TEXT
+
+third_party/externals/dng_sdk/LICENSE.technology
+  https://android.googlesource.com/platform/external/dng_sdk.git/+/c8d0c9b1d16bfda56f15165d39e0ffa360a11123/LICENSE.technology?format=TEXT
+
+third_party/externals/expat/COPYING
+  https://chromium.googlesource.com/external/github.com/libexpat/libexpat.git/+/441f98d02deafd9b090aea568282b28f66a50e36/COPYING?format=TEXT
+
+third_party/externals/freetype/LICENSE.TXT
+  https://chromium.googlesource.com/chromium/src/third_party/freetype2.git/+/d857bd535b6c7e877f262a9b61ed21ee11b35dab/LICENSE.TXT?format=TEXT
+
+third_party/externals/freetype/docs/FTL.TXT
+  https://chromium.googlesource.com/chromium/src/third_party/freetype2.git/+/d857bd535b6c7e877f262a9b61ed21ee11b35dab/docs/FTL.TXT?format=TEXT
+
+third_party/externals/freetype/docs/GPLv2.TXT
+  https://chromium.googlesource.com/chromium/src/third_party/freetype2.git/+/d857bd535b6c7e877f262a9b61ed21ee11b35dab/docs/GPLv2.TXT?format=TEXT
+
+third_party/externals/icu/LICENSE
+  https://chromium.googlesource.com/chromium/deps/icu.git/+/a0718d4f121727e30b8d52c7a189ebf5ab52421f/LICENSE?format=TEXT
+
+third_party/externals/icu/license.html
+  https://chromium.googlesource.com/chromium/deps/icu.git/+/a0718d4f121727e30b8d52c7a189ebf5ab52421f/license.html?format=TEXT
+
+third_party/externals/libjpeg-turbo/LICENSE.md
+  https://chromium.googlesource.com/chromium/deps/libjpeg_turbo.git/+/ed683925e4897a84b3bffc5c1414c85b97a129a3/LICENSE.md?format=TEXT
+
+third_party/externals/libjpeg-turbo/README.ijg
+  https://chromium.googlesource.com/chromium/deps/libjpeg_turbo.git/+/ed683925e4897a84b3bffc5c1414c85b97a129a3/README.ijg?format=TEXT
+
+third_party/externals/piex/LICENSE
+  https://android.googlesource.com/platform/external/piex.git/+/bb217acdca1cc0c16b704669dd6f91a1b509c406/LICENSE?format=TEXT
+
+third_party/externals/wuffs/LICENSE
+  https://skia.googlesource.com/external/github.com/google/wuffs-mirror-release-c.git/+/a0041ac0310b3156b963e2f2bea09245f25ec073/LICENSE?format=TEXT
+
+third_party/expat/LICENSE
+  https://raw.githubusercontent.com/JetBrains/skia/47d3027/third_party/expat/LICENSE
+
+third_party/wuffs/LICENSE
+  https://raw.githubusercontent.com/JetBrains/skia/47d3027/third_party/wuffs/LICENSE

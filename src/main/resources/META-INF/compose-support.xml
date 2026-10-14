@@ -1,0 +1,3 @@
+<!-- Declares the optional Compose module dependency; panels are created by the tool window. -->
+<idea-plugin>
+</idea-plugin>

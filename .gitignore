@@ -1,0 +1,18 @@
+.gradle/
+.idea/
+.intellijPlatform/
+.kotlin/
+build/
+/target/
+/src/main/java/org/antlr/intellij/plugin/parser/ANTLRv4Lexer.tokens
+*.hprof
+.DS_Store
+.env
+.env.*
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+# Plugin signing credentials
+signing/

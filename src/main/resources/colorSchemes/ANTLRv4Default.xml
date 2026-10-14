@@ -1,0 +1,13 @@
+<?xml version='1.0'?>
+<list>
+  <option name="ANTLRv4_RULENAME">
+    <value>
+      <option name="FOREGROUND" value="47478E"/>
+    </value>
+  </option>
+  <option name="ANTLRv4_TOKENNAME">
+    <value>
+      <option name="FOREGROUND" value="660E7A"/>
+    </value>
+  </option>
+</list>

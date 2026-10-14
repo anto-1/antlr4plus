@@ -1,0 +1,142 @@
+<idea-plugin>
+    <id>com.antlr4plus</id>
+    <name>ANTLR4 Plus</name>
+    <version>will be replaced by gradle</version>
+    <vendor email="i00@tutanota.com" url="https://plugins.jetbrains.com/plugin/29781-antlr4-plus">Antoni Tremblay</vendor>
+
+    <!-- Description and change notes are generated from README.md and CHANGELOG.md. -->
+
+    <idea-version since-build="232"/>
+
+    <depends>com.intellij.modules.lang</depends>
+    <depends optional="true" config-file="compose-support.xml">com.intellij.modules.compose</depends>
+
+    <actions>
+        <action id="antlr4plus.TestRule" class="com.antlr4plus.actions.TestRuleAction" text="Test ANTLR Rule"
+                icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg">
+            <add-to-group group-id="StructureViewPopupMenu" anchor="first"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+        <action id="antlr4plus.SyncGeneratedCodeToGrammar"
+                class="com.antlr4plus.actions.SyncGeneratedActionToGrammarAction"
+                text="Sync Highlighted Code to .g4"
+                description="Write the highlighted generated code block under the caret or selection back into the grammar"
+                icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+        <action id="antlr4plus.DefineLexerRulesForLiterals" class="com.antlr4plus.actions.GenerateLexerRulesForLiteralsAction" text="Generate lexer rules for literals" description="Inject lexer rules for undefined literals but leave literal in place"
+                icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg">
+            <add-to-group group-id="GenerateGroup" anchor="first"/>
+        </action>
+        <action id="antlr4plus.InlineRule" class="com.antlr4plus.actions.InlineRuleAction" text="Inline and remove rule"
+                icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg">
+            <keyboard-shortcut keymap="$default" first-keystroke="control alt N"/>
+            <add-to-group group-id="RefactoringMenu" anchor="before" relative-to-action="Move"/>
+        </action>
+        <action id="antlr4plus.ExtractRule" class="com.antlr4plus.actions.ExtractRuleAction" text="Extract rule..."
+                icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg">
+            <keyboard-shortcut keymap="$default" first-keystroke="control alt M"/>
+            <add-to-group group-id="RefactoringMenu" anchor="after" relative-to-action="antlr4plus.InlineRule"/>
+        </action>
+        <action id="antlr4plus.UniquifyRuleRefs" class="com.antlr4plus.actions.UniquifyRuleRefs" text="Make refs to rule unique..."
+                icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg">
+            <add-to-group group-id="RefactoringMenu" anchor="after" relative-to-action="antlr4plus.ExtractRule"/>
+        </action>
+        <group id="com.antlr4plus.actions.fileBindings.MyGroup" popup="false"
+               icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+            <action id="com.antlr4plus.filebinding.BindGrammarFileAction" class="com.antlr4plus.filebinding.BindGrammarFileAction" description="Open a file chooser in the directory of the selected G4P file"
+                    icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg"/>
+            <action id="com.antlr4plus.filebinding.UnbindGrammarFileAction" class="com.antlr4plus.filebinding.UnbindGrammarFileAction" description="Unbind the parser file linked to this editor context if one is already set"
+                    icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg"/>
+            <action id="com.antlr4plus.filebinding.ResetConflictResolutionAction" class="com.antlr4plus.filebinding.ResetConflictResolutionAction" description="Reset conflict resolution for .g4p files bound to the same grammar"
+                    icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg"/>
+            <separator/>
+            <action id="com.antlr4plus.filebinding.RenameToG4pAction" class="com.antlr4plus.filebinding.RenameToG4pAction" description="Append .g4p extension to selected files"
+                    icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg"/>
+            <action id="com.antlr4plus.filebinding.RenameAndBindAction" class="com.antlr4plus.filebinding.RenameAndBindAction" description="Rename files to .g4p and bind to a grammar"
+                    icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg"/>
+            <separator/>
+            <group id="com.antlr4plus.actions.SetG4pRuntimeActionGroup" class="com.antlr4plus.actions.SetG4pRuntimeActionGroup" text="Set Preview Runtime" description="Set preview runtime for selected .g4p files" popup="true"
+                   icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg"/>
+            <separator/>
+            <action id="com.antlr4plus.filebinding.BindingWizardAction" class="com.antlr4plus.filebinding.BindingWizardAction" description="Sequentially bind all .g4p files in the project"
+                    icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg"/>
+        </group>
+        <action id="antlr4plus.ShowAbout"
+                class="com.antlr4plus.actions.ShowAboutAction"
+                text="About ANTLR4+"
+                description="Show information about the ANTLR4+ plugin"
+                icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg">
+            <add-to-group group-id="HelpMenu" anchor="before" relative-to-action="About"/>
+        </action>
+        <action id="antlr4plus.FormatGrammar"
+                class="com.antlr4plus.dotG4Support.formatting.FormatGrammarAction"
+                text="Format ANTLR4 Grammar"
+                description="Format the current ANTLR4 grammar file"
+                icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg">
+            <keyboard-shortcut keymap="$default" first-keystroke="control shift alt G"/>
+            <add-to-group group-id="CodeMenu" anchor="after" relative-to-action="ReformatCode"/>
+        </action>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="ANTLR Preview" displayType="BALLOON"/>
+        <notificationGroup id="ANTLR4Plus" displayType="TOOL_WINDOW"/>
+        <notificationGroup id="ANTLR4+ Notifications" displayType="STICKY_BALLOON"/>
+
+        <lang.syntaxHighlighterFactory language="ANTLRv4P" implementationClass="com.antlr4plus.dotG4Support.syntaxHighlighting.SyntaxHighlighterFactory"/>
+        <lang.commenter language="ANTLRv4P" implementationClass="com.antlr4plus.dotG4Support.commenter.Commenter"/>
+        <indexPatternBuilder implementation="com.antlr4plus.dotG4Support.psi.IndexPatternBuilderImpl"/>
+        <lang.braceMatcher language="ANTLRv4P" implementationClass="com.antlr4plus.dotG4Support.braceMatching.ANTLRv4BraceMatcher"/>
+        <colorSettingsPage implementation="com.antlr4plus.settings.ANTLRv4ColorsPage"/>
+        <additionalTextAttributes scheme="Default" file="colorSchemes/ANTLRv4Default.xml"/>
+        <additionalTextAttributes scheme="Darcula" file="colorSchemes/ANTLRv4Darcula.xml"/>
+        <lang.psiStructureViewFactory language="ANTLRv4P" implementationClass="com.antlr4plus.dotG4Support.structureView.StructureViewFactory"/>
+        <lang.foldingBuilder language="ANTLRv4P" implementationClass="com.antlr4plus.dotG4Support.folding.ANTLRv4FoldingBuilder"/>
+        <iconProvider implementation="com.antlr4plus.icons.IconProvider"/>
+        <externalAnnotator language="ANTLRv4P" implementationClass="com.antlr4plus.dotG4Support.annotator.ExternalAnnotatorImpl"/>
+        <lang.findUsagesProvider language="ANTLRv4P" implementationClass="com.antlr4plus.dotG4Support.findUsage.FindUsagesProvider"/>
+        <completion.contributor language="ANTLRv4P" implementationClass="com.antlr4plus.dotG4Support.completion.CompletionContributor"/>
+        <codeInsight.lineMarkerProvider language="ANTLRv4P" implementationClass="com.antlr4plus.dotG4Support.lineMarker.StartRuleLineMarkerProvider"/>
+        <codeInsight.lineMarkerProvider language="ANTLRv4P" implementationClass="com.antlr4plus.dotG4Support.lineMarker.JumpToGeneratedActionLineMarkerProvider"/>
+        <gotoDeclarationHandler implementation="com.antlr4plus.dotG4Support.lineMarker.GeneratedActionGotoDeclarationHandler"/>
+        <defaultLiveTemplates file="/liveTemplates/lexer/user.xml"/>
+        <liveTemplateContext contextId="ANTLR" implementation="com.antlr4plus.dotG4Support.liveTemplates.ANTLRGenericContext"/>
+        <liveTemplateContext contextId="ANTLR_OUTSIDE" baseContextId="ANTLR" implementation="com.antlr4plus.dotG4Support.liveTemplates.OutsideRuleContext"/>
+        <lang.refactoringSupport language="ANTLRv4P" implementationClass="com.antlr4plus.dotG4Support.refactor.ANTLRv4RefactoringSupport"/>
+        <lang.formatter language="ANTLRv4P" implementationClass="com.antlr4plus.dotG4Support.formatting.ANTLRv4FormattingModelBuilder"/>
+        <postFormatProcessor implementation="com.antlr4plus.dotG4Support.formatting.ANTLRv4PostFormatProcessor"/>
+        <toolWindow
+                id="ANTLR4 Plus"
+                secondary="false"
+                anchor="right"
+                factoryClass="com.antlr4plus.toolWindow.TopRightToolWindow"
+                icon="icons/com/antlr4plus/toolWindow_monochrome_13_13.svg"
+        />
+        <fileType name="ANTLRv4PLanguage" implementationClass="com.antlr4plus.dotG4Support.language.LanguageFileType" fieldName="INSTANCE" language="ANTLRv4P" extensions="g4"/>
+        <lang.parserDefinition language="ANTLRv4P" implementationClass="com.antlr4plus.dotG4Support.ParserDefinition"/>
+        <lang.ast.factory language="ANTLRv4P" implementationClass="com.antlr4plus.dotG4Support.ast.ASTFactory"/>
+        <projectViewNodeDecorator implementation="com.antlr4plus.projectTreeDecoration.G4PFileNodeDecorator" order="last"/>
+        <fileType name="ANTLR4PlusFile" implementationClass="com.antlr4plus.dotG4PSupport.language.LanguageFileType" fieldName="INSTANCE" language="ANTLR4Plus" extensions="g4p"/>
+        <annotator language="ANTLR4Plus" implementationClass="com.antlr4plus.dotG4PSupport.annotator.G4PCustomAnnotator"/>
+        <externalAnnotator language="ANTLR4Plus" implementationClass="com.antlr4plus.error.G4PExternalAnnotator"/>
+        <lang.parserDefinition language="ANTLR4Plus" implementationClass="com.antlr4plus.dotG4PSupport.ANTLR4PlusParserDefinition"/>
+        <applicationService serviceImplementation="com.antlr4plus.compose.ComposeInitializer"/>
+        <projectService serviceImplementation="com.antlr4plus.listener.fileEditorListener.G4PFileEditorManagerListenerImpl"/>
+        <projectService serviceImplementation="com.antlr4plus.parsing.TrustedFilesManager"/>
+        <projectService serviceImplementation="com.antlr4plus.parsing.GrammarWarningsService"/>
+        <projectService serviceImplementation="com.antlr4plus.settings.ProjectSettingsService"/>
+        <projectService serviceImplementation="com.antlr4plus.previewService.PreviewService"/>
+        <projectService serviceImplementation="com.antlr4plus.filebinding.FileBindingService"/>
+        <projectService serviceImplementation="com.antlr4plus.settings.SettingsPersistenceService"/>
+        <postStartupActivity implementation="com.antlr4plus.startup.G4PStartupWorker"/>
+        <editorFactoryListener implementation="com.antlr4plus.listener.editorFactoryListener.EditorFactoryListenerImpl"/>
+        <fileEditorProvider implementation="com.antlr4plus.previewEditor.GeneratedPreviewFileEditorProvider"/>
+    </extensions>
+
+    <projectListeners>
+        <listener class="com.antlr4plus.listener.projectTreeSelectionListener.ProjectViewSelectionListenerImpl" topic="com.intellij.ide.projectView.ProjectViewSelectionListener"/>
+        <listener class="com.antlr4plus.listener.fileEditorListener.G4PFileEditorManagerListenerImpl" topic="com.intellij.openapi.fileEditor.FileEditorManagerListener"/>
+    </projectListeners>
+</idea-plugin>
